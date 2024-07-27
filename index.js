@@ -23,9 +23,6 @@ assert(
 
 async function punycodeUsages() {
   async function findPuny(text) {
-    // let { stdout } = await $({
-    //   shell: "bash",
-    // })`ag --files-with-matches --file-search-regex ".js$" --unrestricted ${text}`;
     try {
       let { stdout } = await $exec(
         `ag --files-with-matches --file-search-regex ".js$" --unrestricted --literal ${text}`,
@@ -67,6 +64,6 @@ if (usages.size === 0) {
 }
 
 console.log(
-  `There are ${usages.size} imports/requires of 'punycode', the node builtin (which is deprecated) and not the 'punycode/' userland package.`,
+  `There are ${usages.size} imports/requires of 'punycode' : The node builtin (which is deprecated) and not the 'punycode/' userland package.`,
 );
 console.log(usages);

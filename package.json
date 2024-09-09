@@ -1,11 +1,14 @@
 {
   "name": "punycode-detector",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "description": "Getting punycode deprecations? find out where. ",
   "main": "index.js",
   "bin": "index.js",
   "keywords": [],
   "author": "",
-  "license": "GPL-3.0"
+  "license": "GPL-3.0",
+  "engines": {
+    "node": ">= 22"
+  }
 }

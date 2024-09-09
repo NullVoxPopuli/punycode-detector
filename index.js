@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { exec } from "node:child_process";
 import { promisify } from "node:util";
 import assert from "node:assert";

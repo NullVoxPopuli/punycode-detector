@@ -51,6 +51,9 @@ async function punycodeUsages() {
     findPuny(`'require("punycode")'`),
     findPuny(`"import('punycode')"`),
     findPuny(`'import("punycode")'`),
+    findPuny(`"from 'punycode'"`),
+    findPuny(`'from "punycode"'`),
+    // side-effects -- hopefully these are very rare
     findPuny(`"import 'punycode'"`),
     findPuny(`'import "punycode"'`),
   ]);

@@ -21,15 +21,8 @@ async function punycodeUsages() {
     exclude: () => false
   });
 
-  for await (const file of allJsFilesIterator) {
-    console.log(file)
-  }
   const filesWithPunycode = new Set();
 
-  // Don't clear the current line
-  console.info();
-
-  return filesWithPunycode;
   for await (const file of allJsFilesIterator) {
     if (file.includes('punycode-detector')) {
       continue;

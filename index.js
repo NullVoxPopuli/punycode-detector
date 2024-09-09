@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 
 import { exec } from "node:child_process";
-import { promisify } from "node:util";
-import assert from "node:assert";
+import { promisify, styleText } from "node:util";
 
 let $exec = promisify(exec);
 
@@ -18,11 +17,15 @@ async function hasAG() {
 
 let isAGAvailable = await hasAG();
 
-assert(
-  isAGAvailable,
-  `ag was not found. This tool requires ag (the_silver_searcher) -- which can be installed by following the istructions here: https://github.com/ggreer/the_silver_searcher`,
-);
-
+if (!isAGAvailable) {
+  console.error(
+    styleText(
+      "red",
+      `ag was not found. This tool requires ag (the_silver_searcher)\n` + `which can be installed by following the istructions here: \n\n\thttps://github.com/ggreer/the_silver_searcher`,
+    ),
+  );
+  process.exit(1);
+}
 async function punycodeUsages() {
   async function findPuny(text) {
     try {
@@ -40,6 +43,8 @@ async function punycodeUsages() {
       throw e;
     }
   }
+
+  console.info(`Scanning for punycode usages, this may take a moment.`);
 
   let results = await Promise.all([
     findPuny(`"require('punycode')"`),
@@ -69,3 +74,4 @@ console.log(
   `There are ${usages.size} imports/requires of 'punycode' : The node builtin (which is deprecated) and not the 'punycode/' userland package.`,
 );
 console.log(usages);
+console.log(`\nTo learn more about punycode, checkout their README: \n\n\thttps://github.com/mathiasbynens/punycode.js`)

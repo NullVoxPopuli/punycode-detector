@@ -10,7 +10,6 @@ This tool tells you exactly which files need to update to use the [punycode modu
 
 ## Usage
 
-Step zero: have [`ag` / `the_silver_searcher`](https://github.com/ggreer/the_silver_searcher?tab=readme-ov-file#installing)
 
 Step one: install your packages with npm/pnpm/yarn/bun/etc
 
@@ -43,3 +42,12 @@ Set(12) {
 }
 
 ```
+
+
+You can optionally use [`ag` / `the_silver_searcher`](https://github.com/ggreer/the_silver_searcher?tab=readme-ov-file#installing), if that performs better on your hardware.
+
+```bash 
+npx punycode-detector --ag
+```
+
+otherwise the default execution requires nothing other than node 22+.
